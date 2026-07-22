@@ -119,6 +119,12 @@ summary:focus-visible {
   white-space: nowrap;
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
+@media (max-width: 700px) {
+  .element-cycle {
+    width: auto;
+    text-align: center;
+  }
+}
 .element-cycle.is-fading {
   opacity: 0;
   transform: translateY(4px);
