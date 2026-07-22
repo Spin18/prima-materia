@@ -407,9 +407,6 @@ summary:focus-visible {
   max-width: 46ch;
   margin: 0 auto 1.25em;
 }
-.hero-outcome {
-  margin-top: -0.5em;
-}
 .hero-support {
   color: var(--muted);
   max-width: 52ch;
