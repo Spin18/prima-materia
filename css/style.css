@@ -688,11 +688,6 @@ summary:focus-visible {
   max-width: 48ch;
   margin: 0 auto 2.25rem;
 }
-.final-cta-note {
-  color: var(--muted);
-  font-size: 0.85rem;
-  margin: 1.25rem 0 0;
-}
 
 /* ===== Footer ===== */
 .site-footer {
