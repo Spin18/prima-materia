@@ -115,7 +115,7 @@ summary:focus-visible {
   color: var(--gold);
   display: inline-block;
   width: 6.4ch;
-  text-align: center;
+  text-align: left;
   white-space: nowrap;
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
