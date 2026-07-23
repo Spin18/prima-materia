@@ -139,6 +139,7 @@
   var cookieBanner = document.getElementById('cookieBanner');
   var cookieAccept = document.getElementById('cookieAccept');
   var cookieDecline = document.getElementById('cookieDecline');
+  var cookieSettingsLink = document.getElementById('cookieSettingsLink');
 
   function loadAnalytics() {
     if (window.gaLoaded) { return; }
@@ -148,6 +149,15 @@
     gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-JVE9YP67X3';
     document.head.appendChild(gaScript);
     gtag('config', 'G-JVE9YP67X3');
+  }
+
+  function clearAnalyticsCookies() {
+    document.cookie.split(';').forEach(function (c) {
+      var name = c.split('=')[0].trim();
+      if (name === '_ga' || name === '_gid' || name === '_gat' || name.indexOf('_ga_') === 0) {
+        document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+      }
+    });
   }
 
   var consent = localStorage.getItem(CONSENT_KEY);
@@ -166,8 +176,20 @@
   }
   if (cookieDecline) {
     cookieDecline.addEventListener('click', function () {
+      var isWithdrawal = localStorage.getItem(CONSENT_KEY) === 'accepted';
       localStorage.setItem(CONSENT_KEY, 'declined');
       cookieBanner.classList.remove('is-visible');
+      clearAnalyticsCookies();
+      if (isWithdrawal) {
+        // Analytics was already loaded this session; reload so it stays off.
+        window.location.reload();
+      }
+    });
+  }
+  if (cookieSettingsLink) {
+    cookieSettingsLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (cookieBanner) { cookieBanner.classList.add('is-visible'); }
     });
   }
 
