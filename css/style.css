@@ -1082,21 +1082,24 @@ summary:focus-visible {
 }
 .article-back-link:hover { color: var(--gold); }
 .article-header {
-  max-width: 720px;
-  margin: 0 auto 2.5rem;
-  text-align: center;
+  margin: 0 0 2.5rem;
 }
-.article-header .eyebrow { text-align: center; }
 .article-featured-image {
-  max-width: 640px;
-  margin: 0 auto 3rem;
+  aspect-ratio: 4 / 3;
+  margin: 0 0 3rem;
   border: 1px solid rgba(201, 168, 76, 0.25);
   overflow: hidden;
 }
 .article-featured-image img {
   width: 100%;
+  height: 100%;
   display: block;
+  object-fit: cover;
+  object-position: center 25%;
   filter: grayscale(1) contrast(1.05);
+}
+@media (max-width: 560px) {
+  .article-featured-image { aspect-ratio: 4 / 3.6; }
 }
 .article-body {
   max-width: 720px;
