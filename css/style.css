@@ -215,8 +215,10 @@ summary:focus-visible {
   color: var(--gold);
 }
 .nav-cta {
+  display: inline-block;
   border: 1px solid var(--gold);
   color: var(--gold) !important;
+  text-decoration: none;
   padding: 0.55rem 1.3rem;
   border-radius: 2px;
   transition: background-color 0.2s ease, color 0.2s ease;
@@ -745,9 +747,15 @@ summary:focus-visible {
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 1.5rem;
+}
+.footer-brand-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
 }
 .brand--footer { font-size: 1.1rem; }
 .footer-nav {
