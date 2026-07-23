@@ -134,10 +134,17 @@
     });
   }
 
-  // ----- Privacy choices modal, gates Google Analytics until accepted -----
+  // ----- Layered privacy choices: notice banner + preference center -----
+  // Layer 1 (banner): Accept All / Essential Only, both one click, equal
+  // weight, so declining never costs more clicks than accepting. Layer 2
+  // (Manage Preferences) holds the granular Analytics toggle.
   var CONSENT_KEY = 'pm_consent';
-  var consentModal = document.getElementById('cookieBanner');
+  var consentBanner = document.getElementById('cookieBanner');
+  var consentModal = document.getElementById('cookiePrefsModal');
   var toggleAnalytics = document.getElementById('toggleAnalytics');
+  var bannerAcceptAllBtn = document.getElementById('cookieAcceptAllBanner');
+  var bannerEssentialOnlyBtn = document.getElementById('cookieEssentialOnly');
+  var bannerManageBtn = document.getElementById('cookieManagePrefs');
   var acceptAllBtn = document.getElementById('cookieAcceptAll');
   var rejectAllBtn = document.getElementById('cookieRejectAll');
   var confirmBtn = document.getElementById('cookieConfirm');
@@ -179,7 +186,12 @@
 
   var storedConsent = getStoredConsent();
 
+  function hideBanner() {
+    if (consentBanner) { consentBanner.classList.remove('is-visible'); }
+  }
+
   function showModal(prefillAnalytics) {
+    hideBanner();
     if (!consentModal) { return; }
     if (toggleAnalytics) { toggleAnalytics.checked = !!prefillAnalytics; }
     consentModal.classList.add('is-visible');
@@ -195,26 +207,46 @@
     storedConsent = { analytics: analyticsGranted };
 
     if (analyticsGranted) {
+      window['ga-disable-G-JVE9YP67X3'] = false;
       loadAnalytics();
+      hideBanner();
       hideModal();
       return;
     }
 
+    // Google's documented opt-out flag: tells an already-running gtag.js to
+    // stop immediately, closing the race where its own session-refresh timer
+    // could re-write the cookie in the brief window before reload completes.
+    window['ga-disable-G-JVE9YP67X3'] = true;
     clearAnalyticsCookies();
     if (wasGranted) {
       // Analytics was already loaded this session; reload so it actually stops.
       window.location.reload();
       return;
     }
+    hideBanner();
     hideModal();
   }
 
   if (storedConsent && storedConsent.analytics) {
+    window['ga-disable-G-JVE9YP67X3'] = false;
     loadAnalytics();
-  } else if (!storedConsent) {
-    showModal(false);
+  } else {
+    window['ga-disable-G-JVE9YP67X3'] = true;
+  }
+  if (!storedConsent && consentBanner) {
+    consentBanner.classList.add('is-visible');
   }
 
+  if (bannerAcceptAllBtn) {
+    bannerAcceptAllBtn.addEventListener('click', function () { applyConsent(true); });
+  }
+  if (bannerEssentialOnlyBtn) {
+    bannerEssentialOnlyBtn.addEventListener('click', function () { applyConsent(false); });
+  }
+  if (bannerManageBtn) {
+    bannerManageBtn.addEventListener('click', function () { showModal(false); });
+  }
   if (acceptAllBtn) {
     acceptAllBtn.addEventListener('click', function () { applyConsent(true); });
   }
