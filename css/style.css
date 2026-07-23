@@ -719,6 +719,17 @@ summary:focus-visible {
   color: var(--amber);
 }
 
+.form-secondary-cta {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(201, 168, 76, 0.2);
+}
+.form-secondary-cta-label {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
 /* ===== Final CTA ===== */
 .final-cta {
   text-align: center;
