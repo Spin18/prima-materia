@@ -1106,7 +1106,7 @@ summary:focus-visible {
   filter: grayscale(1) contrast(1.05);
 }
 .article-featured-image--lower img {
-  object-position: center 48%;
+  object-position: center 38%;
 }
 .article-featured-image--higher img {
   object-position: center 30%;
