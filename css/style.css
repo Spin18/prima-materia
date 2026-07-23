@@ -954,7 +954,6 @@ summary:focus-visible {
 .faq-disclaimer {
   margin-top: 2.5rem;
   padding-top: 2rem;
-  border-top: 1px solid rgba(201, 168, 76, 0.2);
   color: var(--muted);
   font-size: 0.78rem;
   line-height: 1.6;
