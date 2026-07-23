@@ -571,6 +571,7 @@ summary:focus-visible {
   object-fit: cover;
   object-position: center 12%;
   filter: grayscale(1) contrast(1.05);
+  animation: ken-burns 32s ease-in-out infinite;
   transform-origin: 55% 25%;
   will-change: transform;
 }
