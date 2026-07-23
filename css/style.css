@@ -668,6 +668,54 @@ summary:focus-visible {
   max-width: 62ch;
 }
 
+/* ===== Contact ===== */
+.contact { background: var(--surface); }
+.contact-form {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.form-row label {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.form-row input,
+.form-row textarea {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  border-radius: 2px;
+  padding: 0.85rem 1rem;
+  resize: vertical;
+}
+.form-row input:focus,
+.form-row textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+.contact-form .btn {
+  align-self: flex-start;
+}
+.form-status {
+  font-size: 0.9rem;
+  color: var(--gold);
+  min-height: 1.3em;
+  margin: 0;
+}
+.form-status.is-error {
+  color: var(--amber);
+}
+
 /* ===== Final CTA ===== */
 .final-cta {
   text-align: center;

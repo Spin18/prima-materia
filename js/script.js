@@ -75,6 +75,39 @@
     }, 4500);
   }
 
+  // ----- Contact form (AJAX submit via FormSubmit, with plain-POST fallback) -----
+  var contactForm = document.getElementById('contactForm');
+  var formStatus = document.getElementById('formStatus');
+  if (contactForm && formStatus) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var submitBtn = contactForm.querySelector('button[type="submit"]');
+      var ajaxAction = contactForm.action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
+
+      submitBtn.disabled = true;
+      formStatus.textContent = 'Sending...';
+      formStatus.classList.remove('is-error');
+
+      fetch(ajaxAction, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(contactForm)
+      })
+        .then(function (res) {
+          if (!res.ok) { throw new Error('Request failed'); }
+          formStatus.textContent = "Thank you, your message has been sent. I'll get back to you soon.";
+          contactForm.reset();
+        })
+        .catch(function () {
+          formStatus.textContent = 'Something went wrong. Please email hello@primamateriacoaching.com directly.';
+          formStatus.classList.add('is-error');
+        })
+        .finally(function () {
+          submitBtn.disabled = false;
+        });
+    });
+  }
+
   // ----- Footer year -----
   var yearEl = document.getElementById('year');
   if (yearEl) {
