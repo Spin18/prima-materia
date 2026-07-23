@@ -838,6 +838,27 @@ summary:focus-visible {
   margin: 0 auto 2.25rem;
 }
 
+/* ===== Legal content (Impressum) ===== */
+.legal-content h2 {
+  font-size: 1.25rem;
+  margin-top: 2.25rem;
+}
+.legal-content h2:first-child {
+  margin-top: 0;
+}
+.legal-content p {
+  color: var(--muted);
+}
+.legal-content a {
+  color: var(--gold);
+}
+.legal-updated {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(201, 168, 76, 0.15);
+  font-size: 0.85rem;
+}
+
 /* ===== Footer ===== */
 .site-footer {
   border-top: 1px solid rgba(201, 168, 76, 0.15);
