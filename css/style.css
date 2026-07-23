@@ -1108,6 +1108,9 @@ summary:focus-visible {
 .article-featured-image--lower img {
   object-position: center 48%;
 }
+.article-featured-image--higher img {
+  object-position: center 30%;
+}
 @media (max-width: 560px) {
   .article-featured-image { aspect-ratio: 4 / 3.6; }
 }
