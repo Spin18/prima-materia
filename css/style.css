@@ -298,12 +298,14 @@ summary:focus-visible {
   position: relative;
   width: min(140vw, 900px);
   aspect-ratio: 1;
+  animation: breathe 9s ease-in-out infinite;
+  transform-origin: 50% 50%;
 }
 .sg-rotate {
   position: absolute;
   inset: 0;
   opacity: 0.16;
-  animation: rotate-slow 160s linear infinite, breathe 9s ease-in-out infinite;
+  animation: rotate-slow 160s linear infinite;
   transform-origin: 50% 50%;
 }
 .sg-rotate--outer {
@@ -321,16 +323,17 @@ summary:focus-visible {
 }
 
 @keyframes rotate-slow {
-  from { transform: rotate(0deg) scale(var(--breathe-scale, 1)); }
-  to { transform: rotate(360deg) scale(var(--breathe-scale, 1)); }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 @keyframes breathe {
-  0%, 100% { --breathe-scale: 1; }
-  50% { --breathe-scale: 1.045; }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.045); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .sg-rotate { animation: none; }
+  .sg-stack { animation: none; }
   .hero-photo-img { animation: none; }
 }
 
@@ -752,9 +755,14 @@ summary:focus-visible {
   position: relative;
 }
 .final-cta--photo {
-  background-image: url("../images/final-cta-bg.jpg");
+  background-image: url("../images/final-cta-bg-mobile.jpg");
   background-size: cover;
   background-position: center 30%;
+}
+@media (min-width: 701px) {
+  .final-cta--photo {
+    background-image: url("../images/final-cta-bg.jpg");
+  }
 }
 .final-cta .section-inner { position: relative; z-index: 1; }
 .final-cta-body {

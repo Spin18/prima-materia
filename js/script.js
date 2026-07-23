@@ -48,15 +48,41 @@
     revealEls.forEach(function (el) { observer.observe(el); });
   }
 
-  // ----- Calendly popup (progressive enhancement over plain links) -----
+  // ----- Calendly popup, loaded on demand instead of on every page load -----
+  var calendlyState = 'unloaded'; // unloaded -> loading -> ready (or 'failed')
+  var calendlyQueue = [];
+
+  function loadCalendly(onReady) {
+    if (calendlyState === 'ready') { onReady(); return; }
+    calendlyQueue.push(onReady);
+    if (calendlyState === 'loading') { return; }
+    calendlyState = 'loading';
+
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://assets.calendly.com/assets/external/widget.css';
+    document.head.appendChild(link);
+
+    var script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.onload = function () {
+      calendlyState = 'ready';
+      calendlyQueue.splice(0).forEach(function (fn) { fn(); });
+    };
+    script.onerror = function () {
+      calendlyState = 'failed';
+      calendlyQueue = [];
+    };
+    document.head.appendChild(script);
+  }
+
   document.querySelectorAll('.calendly-link').forEach(function (link) {
     link.addEventListener('click', function (e) {
-      if (window.Calendly) {
-        e.preventDefault();
-        window.Calendly.initPopupWidget({ url: link.href });
-      }
-      // if Calendly widget script hasn't loaded, the link falls through
-      // and opens calendly.com directly in a new tab.
+      e.preventDefault();
+      var url = link.href;
+      loadCalendly(function () {
+        window.Calendly.initPopupWidget({ url: url });
+      });
     });
   });
 

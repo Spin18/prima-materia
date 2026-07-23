@@ -19,9 +19,10 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=DM+Sans:wght@400;500;600&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
 
-<link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
 <link rel="stylesheet" href="css/style.css">
 
 <script type="application/ld+json">
@@ -135,7 +136,10 @@
   <!-- HERO -->
   <section id="top" class="hero hero--photo">
     <div class="hero-photo-media" aria-hidden="true">
-      <img src="images/hero-bg.jpg" alt="" class="hero-photo-img">
+      <picture>
+        <source media="(max-width: 700px)" srcset="images/hero-bg-mobile.jpg">
+        <img src="images/hero-bg.jpg" alt="" class="hero-photo-img" fetchpriority="high">
+      </picture>
     </div>
     <div class="hero-photo-overlay" aria-hidden="true"></div>
 
@@ -452,7 +456,6 @@
   </div>
 </footer>
 
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script src="js/script.js"></script>
 </body>
 </html>
