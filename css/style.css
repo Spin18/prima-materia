@@ -1081,8 +1081,15 @@ summary:focus-visible {
   text-decoration: underline;
 }
 .article-back-link:hover { color: var(--gold); }
+.article-cta + .article-back-link {
+  display: block;
+  margin: 3rem 0 0;
+}
 .article-header {
   margin: 0 0 2.5rem;
+}
+.article-header .section-headline {
+  max-width: none;
 }
 .article-featured-image {
   aspect-ratio: 4 / 3;
@@ -1097,6 +1104,9 @@ summary:focus-visible {
   object-fit: cover;
   object-position: center 25%;
   filter: grayscale(1) contrast(1.05);
+}
+.article-featured-image--lower img {
+  object-position: center 48%;
 }
 @media (max-width: 560px) {
   .article-featured-image { aspect-ratio: 4 / 3.6; }
