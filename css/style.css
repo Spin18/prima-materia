@@ -550,6 +550,7 @@ summary:focus-visible {
 /* ===== Hero ===== */
 .hero {
   min-height: 92vh;
+  min-height: 92svh;
   display: flex;
   align-items: center;
   justify-content: center;
