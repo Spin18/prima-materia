@@ -513,6 +513,11 @@ summary:focus-visible {
   z-index: 1;
 }
 .timeline-icon svg { width: 100%; height: 100%; }
+.timeline-icon-glyph {
+  font-size: 1.9rem;
+  line-height: 1;
+  color: var(--gold);
+}
 .timeline-content h3 {
   font-size: 1.6rem;
   color: var(--gold);
