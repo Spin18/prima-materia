@@ -277,7 +277,7 @@ summary:focus-visible {
   .site-nav.is-open {
     transform: translateX(0);
   }
-  .nav-cta {
+  .site-nav .nav-cta {
     width: 100%;
     text-align: center;
   }
@@ -708,6 +708,10 @@ summary:focus-visible {
 }
 .contact-form .btn {
   align-self: flex-start;
+  width: 100%;
+  max-width: 320px;
+  text-align: center;
+  box-sizing: border-box;
 }
 .form-status {
   font-size: 0.9rem;
@@ -728,6 +732,12 @@ summary:focus-visible {
   color: var(--muted);
   font-size: 0.95rem;
   margin-bottom: 1rem;
+}
+.form-secondary-cta .nav-cta {
+  width: 100%;
+  max-width: 320px;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 /* ===== Final CTA ===== */
