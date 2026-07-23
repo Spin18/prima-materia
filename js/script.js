@@ -134,6 +134,43 @@
     });
   }
 
+  // ----- Cookie consent, gates Google Analytics until accepted -----
+  var CONSENT_KEY = 'pm_cookie_consent';
+  var cookieBanner = document.getElementById('cookieBanner');
+  var cookieAccept = document.getElementById('cookieAccept');
+  var cookieDecline = document.getElementById('cookieDecline');
+
+  function loadAnalytics() {
+    if (window.gaLoaded) { return; }
+    window.gaLoaded = true;
+    var gaScript = document.createElement('script');
+    gaScript.async = true;
+    gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-JVE9YP67X3';
+    document.head.appendChild(gaScript);
+    gtag('config', 'G-JVE9YP67X3');
+  }
+
+  var consent = localStorage.getItem(CONSENT_KEY);
+  if (consent === 'accepted') {
+    loadAnalytics();
+  } else if (consent !== 'declined' && cookieBanner) {
+    cookieBanner.classList.add('is-visible');
+  }
+
+  if (cookieAccept) {
+    cookieAccept.addEventListener('click', function () {
+      localStorage.setItem(CONSENT_KEY, 'accepted');
+      cookieBanner.classList.remove('is-visible');
+      loadAnalytics();
+    });
+  }
+  if (cookieDecline) {
+    cookieDecline.addEventListener('click', function () {
+      localStorage.setItem(CONSENT_KEY, 'declined');
+      cookieBanner.classList.remove('is-visible');
+    });
+  }
+
   // ----- Footer year -----
   var yearEl = document.getElementById('year');
   if (yearEl) {
