@@ -1,4 +1,12 @@
 /* ===== Tokens ===== */
+@font-face {
+  font-family: 'Cormorant Garamond Fallback';
+  src: local('Times New Roman'), local('Liberation Serif'), local('Georgia');
+  ascent-override: 95.96%;
+  descent-override: 29.81%;
+  line-gap-override: 0%;
+  size-adjust: 96.29%;
+}
 :root {
   --bg: #0E0A1A;
   --surface: #1C1230;
@@ -7,7 +15,7 @@
   --text: #F0EAD6;
   --muted: #A89CB8;
 
-  --font-display: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-display: 'Cormorant Garamond', 'Cormorant Garamond Fallback', 'Times New Roman', serif;
   --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
   --max-width: 1120px;
