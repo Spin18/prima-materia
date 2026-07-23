@@ -978,12 +978,14 @@ summary:focus-visible {
 }
 .final-cta--photo {
   background-image: url("../images/final-cta-bg-mobile.jpg");
+  background-image: image-set(url("../images/final-cta-bg-mobile.webp") type("image/webp"), url("../images/final-cta-bg-mobile.jpg") type("image/jpeg"));
   background-size: cover;
   background-position: center 30%;
 }
 @media (min-width: 701px) {
   .final-cta--photo {
     background-image: url("../images/final-cta-bg.jpg");
+    background-image: image-set(url("../images/final-cta-bg.webp") type("image/webp"), url("../images/final-cta-bg.jpg") type("image/jpeg"));
   }
 }
 .final-cta .section-inner { position: relative; z-index: 1; }

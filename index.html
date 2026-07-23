@@ -254,7 +254,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
   <section id="top" class="hero hero--photo">
     <div class="hero-photo-media" aria-hidden="true">
       <picture>
+        <source media="(max-width: 700px)" type="image/webp" srcset="images/hero-bg-mobile.webp">
         <source media="(max-width: 700px)" srcset="images/hero-bg-mobile.jpg">
+        <source type="image/webp" srcset="images/hero-bg.webp">
         <img src="images/hero-bg.jpg" alt="" class="hero-photo-img" fetchpriority="high">
       </picture>
     </div>
@@ -630,6 +632,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
   </div>
 </footer>
 
-<script src="js/script.js"></script>
+<script src="js/script.js" defer></script>
 </body>
 </html>
