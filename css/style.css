@@ -124,6 +124,7 @@ summary:focus-visible {
     display: block;
     width: auto;
     text-align: center;
+    margin-top: -0.15em;
   }
 }
 .element-cycle.is-fading {
