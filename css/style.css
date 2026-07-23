@@ -876,7 +876,9 @@ summary:focus-visible {
 .brand--footer { font-size: 1.1rem; }
 .footer-nav {
   display: flex;
-  gap: 1.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 1.75rem;
 }
 .footer-nav a {
   text-decoration: none;
