@@ -134,19 +134,14 @@
     });
   }
 
-  // ----- Layered privacy choices: notice banner + preference center -----
-  // Layer 1 (banner): Accept All / Essential Only, both one click, equal
-  // weight, so declining never costs more clicks than accepting. Layer 2
-  // (Manage Preferences) holds the granular Analytics toggle.
+  // ----- Privacy notice: single container, accordion reveals granular controls -----
   var CONSENT_KEY = 'pm_consent';
   var consentBanner = document.getElementById('cookieBanner');
-  var consentModal = document.getElementById('cookiePrefsModal');
   var toggleAnalytics = document.getElementById('toggleAnalytics');
   var bannerAcceptAllBtn = document.getElementById('cookieAcceptAllBanner');
   var bannerEssentialOnlyBtn = document.getElementById('cookieEssentialOnly');
-  var bannerManageBtn = document.getElementById('cookieManagePrefs');
-  var acceptAllBtn = document.getElementById('cookieAcceptAll');
-  var rejectAllBtn = document.getElementById('cookieRejectAll');
+  var manageToggleBtn = document.getElementById('cookieManagePrefs');
+  var prefsPanel = document.getElementById('cookiePrefsPanel');
   var confirmBtn = document.getElementById('cookieConfirm');
   var closeBtn = document.getElementById('cookieClose');
   var cookieSettingsLink = document.getElementById('cookieSettingsLink');
@@ -186,19 +181,21 @@
 
   var storedConsent = getStoredConsent();
 
+  function setPanelExpanded(expanded) {
+    if (!prefsPanel || !manageToggleBtn) { return; }
+    prefsPanel.hidden = !expanded;
+    manageToggleBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+  }
+
+  function showBanner(expandPanel, prefillAnalytics) {
+    if (!consentBanner) { return; }
+    if (toggleAnalytics) { toggleAnalytics.checked = !!prefillAnalytics; }
+    setPanelExpanded(!!expandPanel);
+    consentBanner.classList.add('is-visible');
+  }
+
   function hideBanner() {
     if (consentBanner) { consentBanner.classList.remove('is-visible'); }
-  }
-
-  function showModal(prefillAnalytics) {
-    hideBanner();
-    if (!consentModal) { return; }
-    if (toggleAnalytics) { toggleAnalytics.checked = !!prefillAnalytics; }
-    consentModal.classList.add('is-visible');
-  }
-
-  function hideModal() {
-    if (consentModal) { consentModal.classList.remove('is-visible'); }
   }
 
   function applyConsent(analyticsGranted) {
@@ -210,7 +207,6 @@
       window['ga-disable-G-JVE9YP67X3'] = false;
       loadAnalytics();
       hideBanner();
-      hideModal();
       return;
     }
 
@@ -225,7 +221,6 @@
       return;
     }
     hideBanner();
-    hideModal();
   }
 
   if (storedConsent && storedConsent.analytics) {
@@ -244,14 +239,11 @@
   if (bannerEssentialOnlyBtn) {
     bannerEssentialOnlyBtn.addEventListener('click', function () { applyConsent(false); });
   }
-  if (bannerManageBtn) {
-    bannerManageBtn.addEventListener('click', function () { showModal(false); });
-  }
-  if (acceptAllBtn) {
-    acceptAllBtn.addEventListener('click', function () { applyConsent(true); });
-  }
-  if (rejectAllBtn) {
-    rejectAllBtn.addEventListener('click', function () { applyConsent(false); });
+  if (manageToggleBtn) {
+    manageToggleBtn.addEventListener('click', function () {
+      var expanded = manageToggleBtn.getAttribute('aria-expanded') === 'true';
+      setPanelExpanded(!expanded);
+    });
   }
   if (confirmBtn) {
     confirmBtn.addEventListener('click', function () {
@@ -259,18 +251,13 @@
     });
   }
   if (closeBtn) {
-    closeBtn.addEventListener('click', hideModal);
-  }
-  if (consentModal) {
-    consentModal.addEventListener('click', function (e) {
-      if (e.target === consentModal) { hideModal(); }
-    });
+    closeBtn.addEventListener('click', hideBanner);
   }
   if (cookieSettingsLink) {
     cookieSettingsLink.addEventListener('click', function (e) {
       e.preventDefault();
       var current = getStoredConsent();
-      showModal(current ? current.analytics : false);
+      showBanner(true, current ? current.analytics : false);
     });
   }
 

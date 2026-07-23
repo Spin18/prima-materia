@@ -178,29 +178,20 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 <a class="skip-link" href="#main">Skip to content</a>
 
 <div class="consent-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie notice">
+  <button type="button" class="consent-banner-close" id="cookieClose" aria-label="Close">&times;</button>
   <p class="consent-banner-text">This site uses a small number of tools to run reliably and, if you agree, to understand how it's visited. See our <a href="datenschutz.html">Privacy Policy</a> for details.</p>
   <div class="consent-banner-actions">
     <button type="button" class="consent-btn-outline" id="cookieEssentialOnly">Essential Only</button>
     <button type="button" class="consent-btn-solid" id="cookieAcceptAllBanner">Accept All</button>
   </div>
-  <button type="button" class="consent-banner-manage" id="cookieManagePrefs">Manage Preferences</button>
-</div>
 
-<div class="consent-modal" id="cookiePrefsModal" role="dialog" aria-modal="true" aria-live="polite" aria-label="Privacy preferences">
-  <div class="consent-modal-inner">
-    <div class="consent-modal-header">
-      <h2 class="consent-modal-title">Manage Preferences</h2>
-      <button type="button" class="consent-modal-close" id="cookieClose" aria-label="Close">&times;</button>
-    </div>
-    <p class="consent-modal-text">Some tools require your consent; others are essential and always active. You can change your choice at any time via the "Privacy Choices" link in the footer. See our <a href="datenschutz.html">Privacy Policy</a> for details.</p>
+  <button type="button" class="consent-accordion-toggle" id="cookieManagePrefs" aria-expanded="false" aria-controls="cookiePrefsPanel">
+    <span>Manage Preferences</span>
+    <span class="consent-accordion-chevron" aria-hidden="true">&#9662;</span>
+  </button>
 
-    <div class="consent-purposes-header">
-      <span class="consent-purposes-label">Purposes</span>
-      <div class="consent-purposes-actions">
-        <button type="button" class="consent-btn-outline" id="cookieRejectAll">Reject All</button>
-        <button type="button" class="consent-btn-solid" id="cookieAcceptAll">Accept All</button>
-      </div>
-    </div>
+  <div class="consent-accordion-panel" id="cookiePrefsPanel" hidden>
+    <p class="consent-purposes-label">Purposes</p>
 
     <div class="consent-purpose">
       <div class="consent-purpose-row">
@@ -230,7 +221,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
       <p class="consent-purpose-detail">Basic hosting and security logs required to serve this website reliably.</p>
     </div>
 
-    <div class="consent-modal-footer">
+    <div class="consent-accordion-footer">
       <button type="button" class="btn btn-primary" id="cookieConfirm">Confirm</button>
     </div>
   </div>
