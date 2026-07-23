@@ -964,6 +964,12 @@ summary:focus-visible {
   text-align: center;
   box-sizing: border-box;
 }
+@media (max-width: 560px) {
+  .contact-form .btn,
+  .form-secondary-cta .nav-cta {
+    max-width: 100%;
+  }
+}
 
 /* ===== Final CTA ===== */
 .final-cta {
