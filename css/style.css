@@ -1014,6 +1014,7 @@ summary:focus-visible {
 .footer-nav {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   gap: 1rem 1.75rem;
 }
@@ -1023,6 +1024,10 @@ summary:focus-visible {
   color: var(--muted);
 }
 .footer-nav a:hover { color: var(--gold); }
+.footer-nav-icon {
+  display: inline-flex;
+  align-items: center;
+}
 .footer-copyright {
   width: 100%;
   color: var(--muted);
