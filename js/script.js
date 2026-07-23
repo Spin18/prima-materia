@@ -134,11 +134,14 @@
     });
   }
 
-  // ----- Cookie consent, gates Google Analytics until accepted -----
-  var CONSENT_KEY = 'pm_cookie_consent';
-  var cookieBanner = document.getElementById('cookieBanner');
-  var cookieAccept = document.getElementById('cookieAccept');
-  var cookieDecline = document.getElementById('cookieDecline');
+  // ----- Privacy choices modal, gates Google Analytics until accepted -----
+  var CONSENT_KEY = 'pm_consent';
+  var consentModal = document.getElementById('cookieBanner');
+  var toggleAnalytics = document.getElementById('toggleAnalytics');
+  var acceptAllBtn = document.getElementById('cookieAcceptAll');
+  var rejectAllBtn = document.getElementById('cookieRejectAll');
+  var confirmBtn = document.getElementById('cookieConfirm');
+  var closeBtn = document.getElementById('cookieClose');
   var cookieSettingsLink = document.getElementById('cookieSettingsLink');
 
   function loadAnalytics() {
@@ -152,44 +155,90 @@
   }
 
   function clearAnalyticsCookies() {
+    var host = window.location.hostname;
     document.cookie.split(';').forEach(function (c) {
       var name = c.split('=')[0].trim();
       if (name === '_ga' || name === '_gid' || name === '_gat' || name.indexOf('_ga_') === 0) {
-        document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        var expire = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        // gtag.js may have set this with an explicit Domain attribute; try every
+        // variant so the deletion actually matches instead of writing a no-op.
+        document.cookie = expire;
+        document.cookie = expire + ' domain=' + host + ';';
+        document.cookie = expire + ' domain=.' + host + ';';
       }
     });
   }
 
-  var consent = localStorage.getItem(CONSENT_KEY);
-  if (consent === 'accepted') {
-    loadAnalytics();
-  } else if (consent !== 'declined' && cookieBanner) {
-    cookieBanner.classList.add('is-visible');
+  function getStoredConsent() {
+    try {
+      return JSON.parse(localStorage.getItem(CONSENT_KEY));
+    } catch (e) {
+      return null;
+    }
   }
 
-  if (cookieAccept) {
-    cookieAccept.addEventListener('click', function () {
-      localStorage.setItem(CONSENT_KEY, 'accepted');
-      cookieBanner.classList.remove('is-visible');
+  var storedConsent = getStoredConsent();
+
+  function showModal(prefillAnalytics) {
+    if (!consentModal) { return; }
+    if (toggleAnalytics) { toggleAnalytics.checked = !!prefillAnalytics; }
+    consentModal.classList.add('is-visible');
+  }
+
+  function hideModal() {
+    if (consentModal) { consentModal.classList.remove('is-visible'); }
+  }
+
+  function applyConsent(analyticsGranted) {
+    var wasGranted = !!(storedConsent && storedConsent.analytics);
+    localStorage.setItem(CONSENT_KEY, JSON.stringify({ analytics: analyticsGranted }));
+    storedConsent = { analytics: analyticsGranted };
+
+    if (analyticsGranted) {
       loadAnalytics();
+      hideModal();
+      return;
+    }
+
+    clearAnalyticsCookies();
+    if (wasGranted) {
+      // Analytics was already loaded this session; reload so it actually stops.
+      window.location.reload();
+      return;
+    }
+    hideModal();
+  }
+
+  if (storedConsent && storedConsent.analytics) {
+    loadAnalytics();
+  } else if (!storedConsent) {
+    showModal(false);
+  }
+
+  if (acceptAllBtn) {
+    acceptAllBtn.addEventListener('click', function () { applyConsent(true); });
+  }
+  if (rejectAllBtn) {
+    rejectAllBtn.addEventListener('click', function () { applyConsent(false); });
+  }
+  if (confirmBtn) {
+    confirmBtn.addEventListener('click', function () {
+      applyConsent(!!(toggleAnalytics && toggleAnalytics.checked));
     });
   }
-  if (cookieDecline) {
-    cookieDecline.addEventListener('click', function () {
-      var isWithdrawal = localStorage.getItem(CONSENT_KEY) === 'accepted';
-      localStorage.setItem(CONSENT_KEY, 'declined');
-      cookieBanner.classList.remove('is-visible');
-      clearAnalyticsCookies();
-      if (isWithdrawal) {
-        // Analytics was already loaded this session; reload so it stays off.
-        window.location.reload();
-      }
+  if (closeBtn) {
+    closeBtn.addEventListener('click', hideModal);
+  }
+  if (consentModal) {
+    consentModal.addEventListener('click', function (e) {
+      if (e.target === consentModal) { hideModal(); }
     });
   }
   if (cookieSettingsLink) {
     cookieSettingsLink.addEventListener('click', function (e) {
       e.preventDefault();
-      if (cookieBanner) { cookieBanner.classList.add('is-visible'); }
+      var current = getStoredConsent();
+      showModal(current ? current.analytics : false);
     });
   }
 

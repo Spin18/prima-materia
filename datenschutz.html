@@ -25,11 +25,53 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie notice">
-  <p class="cookie-banner-text">This site uses cookies for analytics to understand how visitors use it. You can accept or decline non&#8209;essential cookies. See our <a href="datenschutz.html">Privacy Policy</a> for details.</p>
-  <div class="cookie-banner-actions">
-    <button type="button" class="btn btn-primary cookie-banner-accept" id="cookieAccept">Accept</button>
-    <button type="button" class="cookie-banner-decline" id="cookieDecline">Decline</button>
+<div class="consent-modal" id="cookieBanner" role="dialog" aria-modal="true" aria-live="polite" aria-label="Privacy choices">
+  <div class="consent-modal-inner">
+    <div class="consent-modal-header">
+      <h2 class="consent-modal-title">Your Privacy Choices</h2>
+      <button type="button" class="consent-modal-close" id="cookieClose" aria-label="Close">&times;</button>
+    </div>
+    <p class="consent-modal-text">This site uses a small number of tools to run reliably and to understand how it's visited. Some require your consent; others are essential and always active. You can change your choice at any time via the "Privacy Choices" link in the footer. See our <a href="datenschutz.html">Privacy Policy</a> for details.</p>
+
+    <div class="consent-purposes-header">
+      <span class="consent-purposes-label">Purposes</span>
+      <div class="consent-purposes-actions">
+        <button type="button" class="consent-btn-outline" id="cookieRejectAll">Reject All</button>
+        <button type="button" class="consent-btn-solid" id="cookieAcceptAll">Accept All</button>
+      </div>
+    </div>
+
+    <div class="consent-purpose">
+      <div class="consent-purpose-row">
+        <div class="consent-purpose-info">
+          <p class="consent-purpose-name">Analytics</p>
+          <p class="consent-purpose-basis">Legal Basis: Consent &mdash; Opt In</p>
+        </div>
+        <label class="consent-toggle">
+          <input type="checkbox" id="toggleAnalytics">
+          <span class="consent-toggle-track"></span>
+        </label>
+      </div>
+      <p class="consent-purpose-detail">Google Analytics, used to understand how visitors use this site. Nothing is loaded or set unless you opt in.</p>
+    </div>
+
+    <div class="consent-purpose">
+      <div class="consent-purpose-row">
+        <div class="consent-purpose-info">
+          <p class="consent-purpose-name">Essential</p>
+          <p class="consent-purpose-basis">Legal Basis: Legitimate Interest &mdash; Always Active</p>
+        </div>
+        <label class="consent-toggle consent-toggle--locked">
+          <input type="checkbox" checked disabled aria-label="Essential, always active">
+          <span class="consent-toggle-track"></span>
+        </label>
+      </div>
+      <p class="consent-purpose-detail">Basic hosting and security logs required to serve this website reliably.</p>
+    </div>
+
+    <div class="consent-modal-footer">
+      <button type="button" class="btn btn-primary" id="cookieConfirm">Confirm</button>
+    </div>
   </div>
 </div>
 
@@ -85,8 +127,7 @@
         <p>The purpose of processing is to avert danger and ensure IT security. The legal basis is Art. 6 (1) (f) GDPR. Our legitimate interest is the protection of our information technology systems. Log files are deleted once the stated purposes have been achieved.</p>
 
         <h2>4. Contact via the website and your Consent</h2>
-        <p>Our website's contact form allows quick electronic contact with us. If you contact us by email or via the contact form, the Personal Data you transmit (such as your name, email address and message) is stored automatically. This data is processed solely for the purpose of handling your inquiry and contacting you, based on your Consent in accordance with Art. 6 (1) (a) GDPR.</p>
-        <p>Messages sent through our contact form are transmitted via FormSubmit, a third-party form-processing service, in order to deliver your message to our inbox.</p>
+        <p>Our website's contact form allows quick electronic contact with us. If you contact us by email or via the contact form, the Personal Data you transmit (such as your name, email address and message) is stored automatically. This data is processed solely for the purpose of handling your inquiry and contacting you, based on your Consent in accordance with Art. 6 (1) (a) GDPR. Messages sent through our contact form are transmitted via FormSubmit; see the dedicated section below for details.</p>
 
         <h2>5. Routine deletion and restriction of Personal Data</h2>
         <p>We process and store Personal Data only for the period required to achieve the purpose of processing, or as required by applicable law. Once the purpose no longer applies or a statutory retention period expires, the Personal Data is routinely restricted or deleted.</p>
@@ -140,8 +181,14 @@
         <h2>15. Google Analytics</h2>
         <p>We use Google Analytics to understand how visitors use our website. Google Analytics is only loaded and set after you actively accept cookies via our cookie banner; if you decline or do not respond, it is not loaded. When active, it processes data such as your IP address, browser information and interaction with our pages.</p>
         <p>Recipient: Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA (Google Ireland Limited acts as EU representative).</p>
-        <p>Purpose and legal basis: analyzing and improving our website, based on your Consent, Art. 6 (1) (a) GDPR. You can withdraw your Consent at any time via the "Cookie Settings" link in the footer of our website.</p>
+        <p>Purpose and legal basis: analyzing and improving our website, based on your Consent, Art. 6 (1) (a) GDPR. You can withdraw your Consent at any time via the "Privacy Choices" link in the footer of our website.</p>
         <p>Google is based in the USA; transfers are based on Standard Contractual Clauses or an equivalent safeguard. Further information: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
+
+        <h2>16. FormSubmit</h2>
+        <p>Our contact form uses FormSubmit, a form-processing service, to deliver your message to our inbox. When you submit the contact form, the Personal Data you enter (name, email address and message) is transmitted to FormSubmit, which forwards it directly to our email address. According to FormSubmit's own privacy policy, submitted data is not stored permanently and is not used for any purpose other than delivering it to us.</p>
+        <p>Recipient: FormSubmit (operated by Devro LABS).</p>
+        <p>Purpose and legal basis: transmission of your contact form submission to us, based on your Consent, Art. 6 (1) (a) GDPR, given by voluntarily submitting the form.</p>
+        <p>FormSubmit's registered business address is not published on its website. Where Personal Data is transferred outside the EU/EEA, this is based on Standard Contractual Clauses or an equivalent safeguard; you can request further details from us. Further information: <a href="https://formsubmit.co/privacy.pdf" target="_blank" rel="noopener">formsubmit.co/privacy.pdf</a>.</p>
 
         <p class="legal-updated">Last updated: July 2026</p>
       </div>
@@ -160,7 +207,7 @@
       <a href="https://www.instagram.com/ima_gi_n/" target="_blank" rel="noopener">Instagram</a>
       <a href="impressum.html">Impressum</a>
       <a href="datenschutz.html">Datenschutz</a>
-      <a href="#" id="cookieSettingsLink">Cookie Settings</a>
+      <a href="#" id="cookieSettingsLink">Privacy Choices</a>
     </nav>
     <p class="footer-copyright">&copy; <span id="year">2026</span> Prima Materia Coaching. All rights reserved.</p>
   </div>
