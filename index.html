@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>if(window.innerHeight>0){document.documentElement.style.setProperty('--vh',window.innerHeight*0.01+'px')}</script>
+<script>(function(){function setVH(){if(window.innerHeight>0){document.documentElement.style.setProperty('--vh',window.innerHeight*0.01+'px')}}setVH();window.addEventListener('resize',setVH);window.addEventListener('load',function(){window.removeEventListener('resize',setVH)})})()</script>
 <style>
 @font-face{font-family:'Cormorant Garamond Fallback';src:local('Times New Roman'),local('Liberation Serif'),local('Georgia');ascent-override:95.96%;descent-override:29.81%;line-gap-override:0%;size-adjust:96.29%}
 @font-face{font-family:'DM Sans Fallback';src:local('Helvetica Neue'),local('Segoe UI'),local('Arial');ascent-override:99.76%;descent-override:31.18%;line-gap-override:0%;size-adjust:99.43%}
