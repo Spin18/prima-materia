@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="preload" as="style" href="css/style.css">
 <script>(function(){function setVH(){if(window.innerHeight>0){document.documentElement.style.setProperty('--vh',window.innerHeight*0.01+'px')}}setVH();window.addEventListener('resize',setVH);window.addEventListener('load',function(){window.removeEventListener('resize',setVH)})})()</script>
 <style>
 @font-face{font-family:'Cormorant Garamond Fallback';src:local('Times New Roman'),local('Liberation Serif'),local('Georgia');ascent-override:95.96%;descent-override:29.81%;line-gap-override:0%;size-adjust:96.29%}
@@ -64,7 +63,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
   .hero-headline{animation:none;background:none;-webkit-text-fill-color:currentColor;color:var(--text)}
 }
 </style>
-<link rel="stylesheet" href="css/style.css">
+<script>fetch('css/style.css').then(function(r){return r.text()}).then(function(css){var s=document.createElement('style');s.textContent=css;document.head.appendChild(s)})</script>
+<noscript><link rel="stylesheet" href="css/style.css"></noscript>
 
 <!-- Google tag (gtag.js), loaded only after cookie consent is granted -->
 <script>
