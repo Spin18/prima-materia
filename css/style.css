@@ -7,6 +7,14 @@
   line-gap-override: 0%;
   size-adjust: 96.29%;
 }
+@font-face {
+  font-family: 'DM Sans Fallback';
+  src: local('Helvetica Neue'), local('Segoe UI'), local('Arial');
+  ascent-override: 99.76%;
+  descent-override: 31.18%;
+  line-gap-override: 0%;
+  size-adjust: 99.43%;
+}
 :root {
   --bg: #0E0A1A;
   --surface: #1C1230;
@@ -16,7 +24,7 @@
   --muted: #A89CB8;
 
   --font-display: 'Cormorant Garamond', 'Cormorant Garamond Fallback', 'Times New Roman', serif;
-  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'DM Sans', 'DM Sans Fallback', -apple-system, BlinkMacSystemFont, sans-serif;
 
   --max-width: 1120px;
   --section-pad: clamp(4.5rem, 9vw, 8rem);
