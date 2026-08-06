@@ -427,7 +427,7 @@ summary:focus-visible {
 }
 .brand-logo {
   display: block;
-  height: 60px;
+  height: 84px;
   width: auto;
 }
 .site-nav {
@@ -1205,7 +1205,7 @@ summary:focus-visible {
   justify-content: space-between;
   gap: 1.5rem;
 }
-.brand--footer .brand-logo { height: 48px; }
+.brand--footer .brand-logo { height: 64px; }
 .footer-nav {
   display: flex;
   flex-wrap: wrap;
