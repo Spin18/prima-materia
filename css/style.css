@@ -422,6 +422,13 @@ summary:focus-visible {
   letter-spacing: 0.06em;
   color: var(--gold);
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+.brand-logo {
+  display: block;
+  height: 40px;
+  width: auto;
 }
 .site-nav {
   display: flex;
@@ -1198,7 +1205,7 @@ summary:focus-visible {
   justify-content: space-between;
   gap: 1.5rem;
 }
-.brand--footer { font-size: 1.1rem; }
+.brand--footer .brand-logo { height: 32px; }
 .footer-nav {
   display: flex;
   flex-wrap: wrap;

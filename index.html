@@ -31,7 +31,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .site-header{position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(201,168,76,.15)}
 .site-header::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(14,10,26,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .nav-wrap{max-width:var(--max-width);margin:0 auto;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
-.brand{font-family:var(--font-display);font-size:1.3rem;letter-spacing:.06em;color:var(--gold);text-decoration:none}
+.brand{font-family:var(--font-display);font-size:1.3rem;letter-spacing:.06em;color:var(--gold);text-decoration:none;display:inline-flex;align-items:center}
+.brand-logo{display:block;height:40px;width:auto}
 .site-nav{display:flex;align-items:center;gap:2.25rem}
 .site-nav a{text-decoration:none;font-size:.92rem;letter-spacing:.02em;color:var(--text)}
 .site-nav a:not(.nav-cta):hover{color:var(--gold)}
@@ -232,7 +233,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 
 <header class="site-header" id="siteHeader">
   <div class="nav-wrap">
-    <a href="#top" class="brand">Prima&nbsp;Materia&nbsp;Coaching</a>
+    <a href="#top" class="brand"><img src="images/logo.png" alt="Prima Materia Coaching" class="brand-logo" width="1600" height="420"></a>
 
     <nav class="site-nav" id="siteNav" aria-label="Primary">
       <a href="#top">Home</a>
@@ -616,7 +617,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 
 <footer class="site-footer">
   <div class="footer-inner">
-    <a href="#top" class="brand brand--footer">Prima&nbsp;Materia&nbsp;Coaching</a>
+    <a href="#top" class="brand brand--footer"><img src="images/logo.png" alt="Prima Materia Coaching" class="brand-logo" width="1600" height="420"></a>
     <nav class="footer-nav" aria-label="Footer">
       <a href="#top">Home</a>
       <a href="#about">About</a>
