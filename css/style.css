@@ -834,6 +834,13 @@ summary:focus-visible {
   font-size: 1.2rem;
   margin-top: 1.75rem;
 }
+.about-subhead {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  color: var(--gold);
+  margin: 2rem 0 1rem;
+}
 .credentials {
   margin-top: 2.5rem;
   padding-top: 2rem;
