@@ -417,18 +417,35 @@ summary:focus-visible {
   justify-content: space-between;
 }
 .brand {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  letter-spacing: 0.06em;
-  color: var(--gold);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
+  gap: 0.6rem;
 }
-.brand-logo {
+.brand-icon {
   display: block;
-  height: 84px;
-  width: auto;
+  flex-shrink: 0;
+  color: var(--gold);
+}
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+.brand-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+.brand-subtitle {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 0.3em;
 }
 .site-nav {
   display: flex;
@@ -1205,7 +1222,8 @@ summary:focus-visible {
   justify-content: space-between;
   gap: 1.5rem;
 }
-.brand--footer .brand-logo { height: 64px; }
+.brand--footer .brand-title { font-size: 1.05rem; }
+.brand--footer .brand-subtitle { font-size: 0.6rem; }
 .footer-nav {
   display: flex;
   flex-wrap: wrap;

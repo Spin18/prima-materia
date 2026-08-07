@@ -31,8 +31,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .site-header{position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(201,168,76,.15)}
 .site-header::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(14,10,26,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .nav-wrap{max-width:var(--max-width);margin:0 auto;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
-.brand{font-family:var(--font-display);font-size:1.3rem;letter-spacing:.06em;color:var(--gold);text-decoration:none;display:inline-flex;align-items:center}
-.brand-logo{display:block;height:84px;width:auto}
+.brand{text-decoration:none;display:inline-flex;align-items:center;gap:.6rem}
+.brand-icon{display:block;flex-shrink:0;color:var(--gold)}
+.brand-text{display:flex;flex-direction:column;line-height:1.25}
+.brand-title{font-family:var(--font-display);font-size:1.25rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text)}
+.brand-subtitle{font-family:var(--font-body);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:.3em}
 .site-nav{display:flex;align-items:center;gap:2.25rem}
 .site-nav a{text-decoration:none;font-size:.92rem;letter-spacing:.02em;color:var(--text)}
 .site-nav a:not(.nav-cta):hover{color:var(--gold)}
@@ -233,7 +236,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 
 <header class="site-header" id="siteHeader">
   <div class="nav-wrap">
-    <a href="#top" class="brand"><img src="images/logo.png" alt="Prima Materia Coaching" class="brand-logo" width="1600" height="420"></a>
+    <a href="#top" class="brand"><svg class="brand-icon" viewBox="0 0 64 64" width="40" height="40" aria-hidden="true"><path d="M38.21 8.82A24 24 0 1 1 25.79 8.82" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="32" cy="32" r="4" fill="currentColor"/></svg><span class="brand-text"><span class="brand-title">Prima Materia</span><span class="brand-subtitle">Alchemical Coaching</span></span></a>
 
     <nav class="site-nav" id="siteNav" aria-label="Primary">
       <a href="#top">Home</a>
@@ -617,7 +620,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 
 <footer class="site-footer">
   <div class="footer-inner">
-    <a href="#top" class="brand brand--footer"><img src="images/logo.png" alt="Prima Materia Coaching" class="brand-logo" width="1600" height="420"></a>
+    <a href="#top" class="brand brand--footer"><svg class="brand-icon" viewBox="0 0 64 64" width="30" height="30" aria-hidden="true"><path d="M38.21 8.82A24 24 0 1 1 25.79 8.82" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="32" cy="32" r="4" fill="currentColor"/></svg><span class="brand-text"><span class="brand-title">Prima Materia</span><span class="brand-subtitle">Alchemical Coaching</span></span></a>
     <nav class="footer-nav" aria-label="Footer">
       <a href="#top">Home</a>
       <a href="#about">About</a>
