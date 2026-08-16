@@ -266,4 +266,14 @@
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
+
+  // ----- De-obfuscate contact links (reversed strings, assembled only at runtime) -----
+  document.querySelectorAll('[data-obfuscate]').forEach(function (el) {
+    var type = el.getAttribute('data-obfuscate');
+    var value = el.getAttribute('data-r').split('').reverse().join('');
+    var displayR = el.getAttribute('data-display-r');
+    var display = displayR ? displayR.split('').reverse().join('') : value;
+    el.href = (type === 'mail' ? 'mailto:' : 'tel:') + value;
+    el.textContent = display;
+  });
 })();
