@@ -673,7 +673,7 @@ summary:focus-visible {
 .mirror {
   background: var(--surface);
 }
-.tree-of-life {
+.ankh {
   position: absolute;
   inset: 0;
   display: flex;
@@ -683,15 +683,11 @@ summary:focus-visible {
   pointer-events: none;
   z-index: 0;
 }
-.tol-svg {
-  width: min(88%, 820px);
-  height: auto;
-  opacity: 0.09;
-}
-@media (max-width: 700px) {
-  .tol-svg {
-    width: min(150%, 640px);
-  }
+.ankh-svg {
+  height: min(92%, 880px);
+  width: auto;
+  max-width: 100%;
+  opacity: 0.12;
 }
 .mirror .section-inner {
   position: relative;
