@@ -43,7 +43,9 @@
           }
         });
       },
-      { threshold: 0.15, rootMargin: '0px 0px -60px 0px' }
+      // Start revealing 300px before a section reaches the viewport (above and below),
+      // so fast scrolling never lands on a section that hasn't started animating yet.
+      { threshold: 0, rootMargin: '300px 0px' }
     );
     revealEls.forEach(function (el) { observer.observe(el); });
   }
